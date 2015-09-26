@@ -37,7 +37,7 @@ var common = {
 
 // Development
 
-if (TARGET === 'start' || !TARGET) {
+if (TARGET === 'start' || TARGET === 'debug' || !TARGET) {
 
   module.exports = merge(common, {
 
@@ -59,6 +59,7 @@ if (TARGET === 'start' || !TARGET) {
 
     plugins: [
       new Webpack.HotModuleReplacementPlugin(),
+      new Webpack.DefinePlugin({ DEBUG: TARGET === 'debug' })
     ]
 
   });
