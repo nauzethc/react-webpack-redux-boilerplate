@@ -1,8 +1,8 @@
 {
   "name": "react-webpack-boilerplate",
   "version": "1.0.0",
-  "description": "Boilerplate for ReactJS project. Webpack + Hot Loader + Linting + Flux folders",
-  "main": "app/client.js",
+  "description": "Boilerplate for ReactJS project. Webpack + Hot Loader + Linting + Redux",
+  "main": "app/index.js",
   "scripts": {
     "start": "webpack-dev-server",
     "debug": "DEBUG=true webpack-dev-server",
@@ -23,7 +23,11 @@
     "webpack",
     "hot",
     "reload",
-    "lint"
+    "lint",
+    "redux",
+    "flux",
+    "react-redux",
+    "redux-devtools"
   ],
   "license": "ISC",
   "homepage": "http://github.com/nauzethc/react-webpack-boilerplate",
