@@ -1,5 +1,5 @@
 {
-  "name": "react-webpack-boilerplate",
+  "name": "react-webpack-redux-boilerplate",
   "version": "1.0.0",
   "description": "Boilerplate for ReactJS project. Webpack + Hot Loader + Linting + Redux",
   "main": "app/index.js",
@@ -13,7 +13,7 @@
   },
   "respository": {
     "type": "git",
-    "url": "https://github.com/nauzethc/react-webpack-boilerplate.git"
+    "url": "https://github.com/nauzethc/react-webpack-redux-boilerplate.git"
   },
   "author": "Nauzet Hernandez <nauzethc@gmail.com> (http://github.com/nauzethc)",
   "keywords": [
@@ -30,7 +30,7 @@
     "redux-devtools"
   ],
   "license": "ISC",
-  "homepage": "http://github.com/nauzethc/react-webpack-boilerplate",
+  "homepage": "http://github.com/nauzethc/react-webpack-redux-boilerplate",
   "devDependencies": {
     "babel-core": "^5.8.24",
     "babel-eslint": "^4.1.3",

@@ -1,4 +1,4 @@
-# react-webpack-boilerplate
+# react-webpack-redux-boilerplate
 Minimal boilerplate for ReactJS+Redux with dev environment.
 
  - [React](https://github.com/facebook/react)
