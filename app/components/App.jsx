@@ -21,7 +21,7 @@ class App extends React.Component {
         <h1>Hello, React! <a href="#" onClick={this.addItem.bind(this)}>+</a></h1>
         <ul>
           { this.props.items.map(item => {
-            return <li>{ item.text }</li>;
+            return <li key={item.id}>{item.text}</li>;
           }) }
         </ul>
       </div>
