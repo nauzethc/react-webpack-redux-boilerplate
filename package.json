@@ -1,0 +1,51 @@
+{
+  "name": "react-webpack-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate for ReactJS project. Webpack + Hot Loader + Linting + Flux folders",
+  "main": "app/client.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack",
+    "lint": "npm run lint-js && npm run lint-css",
+    "lint-js": "eslint . --ext .js --ext .jsx",
+    "lint-css": "csslint app --quiet"
+  },
+  "respository": {
+    "type": "git",
+    "url": "https://github.com/nauzethc/react-webpack-boilerplate.git"
+  },
+  "author": "Nauzet Hernandez <nauzethc@gmail.com> (http://github.com/nauzethc)",
+  "keywords": [
+    "react",
+    "reactjs",
+    "boilerplate",
+    "webpack",
+    "hot",
+    "reload",
+    "lint"
+  ],
+  "license": "ISC",
+  "homepage": "http://github.com/nauzethc/react-webpack-boilerplate",
+  "devDependencies": {
+    "babel-core": "^5.8.24",
+    "babel-eslint": "^4.1.3",
+    "babel-loader": "^5.3.2",
+    "clean-webpack-plugin": "^0.1.3",
+    "css-loader": "^0.18.0",
+    "csslint": "^0.10.0",
+    "csslint-loader": "^0.2.1",
+    "eslint": "^1.5.1",
+    "eslint-loader": "^1.0.0",
+    "eslint-plugin-react": "^3.4.2",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "html-webpack-plugin": "^1.6.1",
+    "react-hot-loader": "^1.3.0",
+    "style-loader": "^0.12.3",
+    "webpack": "^1.12.1",
+    "webpack-dev-server": "^1.11.0",
+    "webpack-merge": "^0.2.0"
+  },
+  "dependencies": {
+   "react": "^0.13.3"
+ }
+}
