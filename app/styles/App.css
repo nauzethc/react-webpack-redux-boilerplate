@@ -1,5 +1,10 @@
 body {
   background-color: rgb(26, 29, 36);
-  color: rgb(92, 99, 102);
+  color: #ABB2BF;
   font-family: "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+a {
+  color: #D19A66;
+  text-decoration: none;
 }
