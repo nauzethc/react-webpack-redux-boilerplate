@@ -1,6 +1,6 @@
 import React from 'react';
-import App from './components/App.jsx';
+import Container from './containers/Container.jsx';
 
 const root = document.createElement('div');
 document.body.appendChild(root);
-React.render(<App />, root);
+React.render(<Container />, root);
