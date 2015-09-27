@@ -9,7 +9,7 @@ function item(state = {}, action) {
 
     case types.ADD_ITEM:
     case types.EDIT_ITEM:
-      return Object.assign({}, {...state}, { text: action.text });
+      return Object.assign({}, state, { id: action.id, text: action.text });
 
     default:
       return state;
@@ -21,21 +21,17 @@ function itemsById(state = {}, action) {
   switch(action.type) {
 
     case types.ADD_ITEM:
-      newState = {};
-      newState[action.id] = item({ id: action.id }, action);
-      return Object.assign({}, {...state, ...newState});
+    case types.EDIT_ITEM:
+      newState = Object.assign({}, state);
+      newState[action.id] = item(state[action.id], action);
+      return newState;
 
     case types.REMOVE_ITEM:
       newState = {};
       Object.keys(state)
         .filter(id => id != action.id)
-        .forEach(id => newState[id] = Object.assign({}, state[id]));
+        .forEach(id => newState[id] = state[id]);
       return newState;
-
-    case types.EDIT_ITEM:
-      newState = {};
-      newState[action.id] = item(state[action.id], action);
-      return Object.assign({}, {...state}, {...newState});
 
     default:
       return state;
