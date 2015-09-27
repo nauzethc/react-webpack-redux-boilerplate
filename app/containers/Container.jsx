@@ -25,19 +25,31 @@ if (DEBUG) {
 // Set initial state
 
 const initialState = {
-  counter: 4,
-  items: [
-    { id: 1, text: 'Webpack' },
-    { id: 2, text: 'Hot Loader' },
-    { id: 3, text: 'Redux' },
-  ]
+  data: {
+    counter: 3,
+    itemsById: {
+      1: { id: 1, text: 'Webpack' },
+      2: { id: 2, text: 'Hot Loader' },
+      3: { id: 3, text: 'Redux' }
+    }
+  }
 };
+
+
+// Create store
+
+const store = createFinalStore(reducer, initialState);
 
 
 // Inject state into App
 
-const store = createFinalStore(reducer, initialState);
-const AppInjected = connect(state => state)(App);
+const AppInjected = connect(state => {
+  // Items is exposed as list and counter is hidden to app
+  return {
+    items: Object.keys(state.data.itemsById)
+      .map(id => state.data.itemsById[id])
+  };
+})(App);
 
 
 // Export injected component
