@@ -2,5 +2,6 @@
 
 export default {
   ADD_ITEM: 'ADD_ITEM',
-  INCREMENT: 'INCREMENT'
+  REMOVE_ITEM: 'REMOVE_ITEM',
+  EDIT_ITEM: 'EDIT_ITEM'
 };
