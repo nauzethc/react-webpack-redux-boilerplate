@@ -7,6 +7,7 @@ Minimal boilerplate for ReactJS+Redux with dev environment.
  - [webpack-dev-server](https://github.com/webpack/webpack-dev-server) (Web server for development usage)
  - [react-hot-loader](https://github.com/gaearon/react-hot-loader) (hot module replacement)
  - [redux](https://github.com/rackt/redux) (State container)
+ - [redux-thunk](https://github.com/gaearon/redux-thunk) (Async functions dispatching for Redux)
  - [react-redux](https://github.com/rackt/react-redux) (React bindings for React)
  - [eslint](https://github.com/eslint/eslint) and [csslint](https://github.com/CSSLint/csslint) (Source code linters)
 
