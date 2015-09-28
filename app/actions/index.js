@@ -3,7 +3,7 @@ import types from './types';
 
 // Add your actions
 
-// Sync actions
+// Action creators, they return plain objects
 
 export function addItem(text) {
   return {
@@ -42,7 +42,9 @@ export function receiveItem(text) {
 }
 
 
-// Async action
+// Async actions
+// They are responsible of dispatch sync actions instead of
+// working as an action creator
 
 export function fetchItem(text) {
   return function(dispatch) {
