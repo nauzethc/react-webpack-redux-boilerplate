@@ -1,6 +1,7 @@
 import React from 'react';
 import Debugger from './Debugger.jsx';
-import { createStore, compose } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 import { Provider, connect } from 'react-redux';
 import { devTools, persistState } from 'redux-devtools';
 import App from '../components/App.jsx';
@@ -20,6 +21,11 @@ if (DEBUG) {
 } else {
   createFinalStore = createStore;
 }
+
+
+// Enable thunk middleware (enable functions dispatching)
+
+createFinalStore = applyMiddleware(thunkMiddleware)(createFinalStore);
 
 
 // Set initial state
@@ -46,6 +52,7 @@ const store = createFinalStore(reducer, initialState);
 const AppInjected = connect(state => {
   // Items is exposed as list and counter is hidden to app
   return {
+    isFetching: state.isFetching,
     items: Object.keys(state.data.itemsById)
       .map(id => state.data.itemsById[id])
   };
