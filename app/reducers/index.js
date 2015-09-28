@@ -9,7 +9,11 @@ function item(state = {}, action) {
 
     case types.ADD_ITEM:
     case types.EDIT_ITEM:
-      return Object.assign({}, state, { id: action.id, text: action.text });
+    case types.RECEIVE_ITEM:
+      return Object.assign({}, state, {
+        id: action.id,
+        text: action.text
+      });
 
     default:
       return state;
@@ -17,17 +21,17 @@ function item(state = {}, action) {
 }
 
 function itemsById(state = {}, action) {
-  let newState;
   switch(action.type) {
 
     case types.ADD_ITEM:
     case types.EDIT_ITEM:
-      newState = Object.assign({}, state);
-      newState[action.id] = item(state[action.id], action);
-      return newState;
+    case types.RECEIVE_ITEM:
+      return Object.assign({}, state, {
+        [action.id]: item(state[action.id], action)
+      });
 
     case types.REMOVE_ITEM:
-      newState = {};
+      const newState = {};
       Object.keys(state)
         .filter(id => id != action.id)
         .forEach(id => newState[id] = state[id]);
@@ -39,9 +43,10 @@ function itemsById(state = {}, action) {
 }
 
 function data(state = { counter: 0, itemsById: {} }, action) {
-
   switch(action.type) {
+
     case types.ADD_ITEM:
+    case types.RECEIVE_ITEM:
       return Object.assign({}, {
         counter: state.counter + 1,
         itemsById: itemsById(state.itemsById, {...action, id: state.counter + 1})}
@@ -60,7 +65,21 @@ function data(state = { counter: 0, itemsById: {} }, action) {
 
 }
 
+function isFetching(state = false, action) {
+  switch (action.type) {
+
+    case types.REQUEST_ITEM:
+      return true;
+
+    case types.RECEIVE_ITEM:
+      return false;
+
+    default:
+      return state;
+  }
+}
+
 
 // Export reducers as global reducer
 
-export default combineReducers({ data });
+export default combineReducers({ isFetching, data });
