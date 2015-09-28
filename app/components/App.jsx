@@ -19,10 +19,21 @@ class App extends React.Component {
     this.props.dispatch(actions.editItem(id, text));
   }
 
+  fetchItem() {
+    this.props.dispatch(actions.fetchItem('New Item'));
+  }
+
   render() {
     return (
       <div className="app">
-        <h1>Hello, React! <a href="#" onClick={this.addItem.bind(this)}>+</a></h1>
+        <h1>Hello, React!</h1>
+        <p>
+          [<a href="#" onClick={this.addItem.bind(this)}>Add</a>]
+          {' '}
+          [<a href="#" onClick={this.fetchItem.bind(this)}>Request</a>]
+          {' '}
+          {this.props.isFetching ? 'Loading...':''}
+        </p>
         <ul>
           { this.props.items.map(item => {
             return (
