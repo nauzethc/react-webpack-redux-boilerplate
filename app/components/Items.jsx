@@ -1,11 +1,12 @@
 import React from 'react';
-import actions from '../actions';
+import { connect } from 'react-redux';
+import { actions } from '../actions/items';
 import '../styles/App.css';
 
 import Editable from './Editable.jsx';
 
 
-class App extends React.Component {
+class Items extends React.Component {
 
   addItem() {
     this.props.dispatch(actions.addItem('New Item'));
@@ -51,4 +52,12 @@ class App extends React.Component {
 
 }
 
-export default App;
+const select = (state) => {
+  return {
+    isFetching: state.items.isFetching,
+    items: Object.keys(state.items.data.itemsById)
+      .map(id => state.items.data.itemsById[id])
+  }
+};
+
+export default connect(select)(Items);
