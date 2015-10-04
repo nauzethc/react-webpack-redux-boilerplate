@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { actions, types } from '../actions/items';
+import { types } from '../actions/items';
 
 
 function item(state = {}, action) {
