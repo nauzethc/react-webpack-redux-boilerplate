@@ -1,7 +1,7 @@
 import React from 'react';
 import { actions } from '../actions/items';
 import ItemsConnector from '../connectors/items';
-import '../styles/App.css';
+import '../styles/Items.css';
 import Editable from './Editable.jsx';
 
 
