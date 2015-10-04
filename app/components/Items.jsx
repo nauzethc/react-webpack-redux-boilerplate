@@ -1,11 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { actions } from '../actions/items';
+import ItemsConnector from '../connectors/items';
 import '../styles/App.css';
-
 import Editable from './Editable.jsx';
 
 
+@ItemsConnector
 class Items extends React.Component {
 
   addItem() {
@@ -52,12 +52,4 @@ class Items extends React.Component {
 
 }
 
-const select = (state) => {
-  return {
-    isFetching: state.items.isFetching,
-    items: Object.keys(state.items.data.itemsById)
-      .map(id => state.items.data.itemsById[id])
-  }
-};
-
-export default connect(select)(Items);
+export default Items;
