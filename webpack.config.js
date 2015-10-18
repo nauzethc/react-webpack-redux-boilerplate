@@ -13,7 +13,9 @@ var ROOT = path.resolve(__dirname);
 
 var common = {
 
-  entry: path.resolve(ROOT, 'app'),
+  entry: [
+    path.resolve(ROOT, 'app')
+  ],
 
   resolve: ['', '.js', '.jsx'],
 
@@ -30,7 +32,11 @@ var common = {
   },
 
   plugins: [
-    new HtmlPlugin({ title: 'React App' })
+    new HtmlPlugin({
+      title: 'React App',
+      inject: 'body',
+      template: path.resolve(ROOT, 'app/templates/index.html')
+    })
   ]
 
 };
@@ -53,13 +59,13 @@ if (TARGET === 'start' || TARGET === 'debug' || !TARGET) {
     module: {
       loaders: [
         { test: /\.css$/, loaders: ['style', 'css'], include: path.resolve(ROOT, 'app') },
-        { test: /\.jsx?$/, loaders: ['react-hot', 'babel'], include: path.resolve(ROOT, 'app') }
+        { test: /\.jsx?$/, loaders: ['babel'], include: path.resolve(ROOT, 'app') }
       ]
     },
 
     plugins: [
       new Webpack.HotModuleReplacementPlugin(),
-      new Webpack.DefinePlugin({ DEBUG: TARGET === 'debug' })
+      new Webpack.DefinePlugin({ 'DEBUG': TARGET === 'debug' })
     ]
 
   });
@@ -70,10 +76,12 @@ if (TARGET === 'start' || TARGET === 'debug' || !TARGET) {
 
   module.exports = merge(common, {
 
-    entry: {
-      app: path.resolve(ROOT, 'app'),
-      vendor: Object.keys(pkg.dependencies)
-    },
+    entry: [
+      {
+        app: path.resolve(ROOT, 'app'),
+        vendor: Object.keys(pkg.dependencies)
+      }
+    ],
 
     output: {
       path: path.resolve(ROOT, 'build'),
