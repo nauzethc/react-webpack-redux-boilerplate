@@ -1,20 +1,18 @@
 import React from 'react';
 
-class Editable extends React.Component {
+const Editable = React.createClass({
 
-  constructor(props) {
-    super(props);
-    this.state = { isEditing: false };
-    this._toggleEdit = this._toggleEdit.bind(this);
-  }
+  getInitialState() {
+    return { isEditing: false };
+  },
 
-  _toggleEdit() {
+  toggleEdit() {
     if (this.state.isEditing && this.props.onEdit) {
-      const value = React.findDOMNode(this.refs.inputValue).value.trim();
+      const value = this.refs.inputValue.value.trim();
       if (value !== this.props.value) this.props.onEdit(value);
     }
     this.setState({ isEditing: !this.state.isEditing });
-  }
+  },
 
   render() {
     let editable;
@@ -23,13 +21,13 @@ class Editable extends React.Component {
         ref="inputValue"
         autoFocus="true"
         defaultValue={this.props.value}
-        onBlur={this._toggleEdit} />;
+        onBlur={this.toggleEdit} />;
     } else {
-      editable = <span onClick={this._toggleEdit}>{this.props.value}</span>
+      editable = <span onClick={this.toggleEdit}>{this.props.value}</span>
     }
     return editable;
-  }
+  },
 
-}
+});
 
 export default Editable;

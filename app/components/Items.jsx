@@ -1,37 +1,36 @@
 import React from 'react';
-import { actions } from '../actions/items';
-import ItemsConnector from '../connectors/items';
+import { creators } from '../actions/items';
+import { ItemsConnector } from '../connectors/items';
 import '../styles/Items.css';
 import Editable from './Editable.jsx';
 
 
-@ItemsConnector
-class Items extends React.Component {
+const Items = React.createClass({
 
   addItem() {
-    this.props.dispatch(actions.addItem('New Item'));
-  }
+    this.props.dispatch(creators.addItem('New Item'));
+  },
 
   removeItem(id) {
-    this.props.dispatch(actions.removeItem(id));
-  }
+    this.props.dispatch(creators.removeItem(id));
+  },
 
   editItem(id, text) {
-    this.props.dispatch(actions.editItem(id, text));
-  }
+    this.props.dispatch(creators.editItem(id, text));
+  },
 
   fetchItem() {
-    this.props.dispatch(actions.fetchItem('New Item'));
-  }
+    this.props.dispatch(creators.fetchItem('New Item'));
+  },
 
   render() {
     return (
       <div className="app">
         <h1>Hello, React!</h1>
         <p>
-          [<a href="#" onClick={this.addItem.bind(this)}>Add</a>]
+          [<a href="#" onClick={this.addItem}>Add</a>]
           {' '}
-          [<a href="#" onClick={this.fetchItem.bind(this)}>Request</a>]
+          [<a href="#" onClick={this.fetchItem}>Request</a>]
           {' '}
           {this.props.isFetching ? 'Loading...':''}
         </p>
@@ -48,8 +47,8 @@ class Items extends React.Component {
         </ul>
       </div>
     );
-  }
+  },
 
-}
+});
 
-export default Items;
+export default ItemsConnector(Items);
