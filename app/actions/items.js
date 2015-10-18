@@ -34,7 +34,7 @@ function receiveItem(text) {
 
 // Public action creators
 
-export const actions = {
+export const creators = {
 
   addItem(text) {
     return {
@@ -72,4 +72,4 @@ export const actions = {
 
 // Export all by default
 
-export default { types, actions };
+export default { types, creators };
