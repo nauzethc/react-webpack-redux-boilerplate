@@ -51,19 +51,13 @@ const store = createFinalStore(reducer, initialState);
 
 // Export injected component
 
-class Container extends React.Component {
-
-  render() {
-    return (
-      <div>
-        <Provider store={store}>
-          { () => <Items /> }
-        </Provider>
-        { DEBUG ? <Debugger store={store} /> : null }
-      </div>
-    );
-  }
-
-}
-
-export default Container;
+export default (props) => {
+  return (
+    <div>
+      <Provider store={store}>
+        <Items />
+      </Provider>
+      { DEBUG ? <Debugger store={store} /> : null }
+    </div>
+  );
+};
