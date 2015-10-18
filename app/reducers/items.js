@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { types } from '../actions/items';
 
 
-function item(state = {}, action) {
+const item = (state = {}, action) => {
   switch (action.type) {
 
     case types.ADD_ITEM:
@@ -16,9 +16,9 @@ function item(state = {}, action) {
     default:
       return state;
   }
-}
+};
 
-function itemsById(state = {}, action) {
+const itemsById = (state = {}, action) => {
   switch(action.type) {
 
     case types.ADD_ITEM:
@@ -38,9 +38,9 @@ function itemsById(state = {}, action) {
     default:
       return state;
   }
-}
+};
 
-function data(state = { counter: 0, itemsById: {} }, action) {
+const data = (state = { counter: 0, itemsById: {} }, action) => {
   switch(action.type) {
 
     case types.ADD_ITEM:
@@ -61,9 +61,9 @@ function data(state = { counter: 0, itemsById: {} }, action) {
       return state;
   }
 
-}
+};
 
-function isFetching(state = false, action) {
+const isFetching = (state = false, action) => {
   switch (action.type) {
 
     case types.REQUEST_ITEM:
@@ -75,7 +75,7 @@ function isFetching(state = false, action) {
     default:
       return state;
   }
-}
+};
 
 export default combineReducers({
   data,
