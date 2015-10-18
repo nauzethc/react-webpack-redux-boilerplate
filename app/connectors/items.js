@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 
-export default ItemsConnector = (Component) => {
+const ItemsConnector = (Component) => {
   return connect((state) => {
     return {
       isFetching: state.items.isFetching,
@@ -9,4 +9,8 @@ export default ItemsConnector = (Component) => {
         .map(id => state.items.data.itemsById[id])
     }
   })(Component);
+};
+
+export default {
+  ItemsConnector,
 };
