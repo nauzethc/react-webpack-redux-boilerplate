@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
-// Add reducers or import them from other modules
+// Import "ducks" reducers
 
-import items from './items';
+import items from '../ducks/items.duck';
 
 // Export reducers as global reducer
 
