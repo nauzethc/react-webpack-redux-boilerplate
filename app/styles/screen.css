@@ -1,0 +1,101 @@
+/* ************************************************************************** */
+/* Main
+/* ************************************************************************** */
+
+body {
+  background-color: #263238;
+  color: #AABBC3;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+
+/* ************************************************************************** */
+/* Items
+/* ************************************************************************** */
+
+.items-container {
+  background-color: white;
+  color: black;
+  border: 1px solid grey;
+  width: 500px;
+}
+.items-container button {
+  border: 0;
+}
+.items-container .form {
+  margin: 10px;
+  display: flex;
+}
+.items-container .form input[type="text"] {
+  flex-grow: 1;
+  font-size: 1rem;
+  border: 0;
+  outline: 0;
+}
+.items-container .form button{
+  color: grey;
+  background-color: #ccc;
+}
+.items-container .form button:not(.disabled) {
+  background-color: #afa;
+}
+.items-container .form button:not(.disabled):hover {
+  background-color: #7f7;
+}
+.items-container .list {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.items-container .list li {
+  list-style: none;
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+.items-container .list li:last-child {
+  border-bottom: 1px solid #ccc;
+}
+.items-container .list li .editable {
+  flex-grow: 1;
+  font-size: 1rem;
+  outline: 0;
+  border: 0;
+  margin: 0;
+}
+.items-container .list input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+}
+.items-container .list input[type="checkbox"]:checked + .editable {
+  text-decoration: line-through;
+}
+.items-container .list button {
+  margin-left: 10px;
+  float: right;
+  background-color: #faa;
+  font-weight: bold;
+  color: white;
+}
+.items-container .list button:hover {
+  background-color: #f77;
+}
+.items-container .selector {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+.items-container .selector button {
+  background-color: #ff8;
+}
+.items-container .selector button:hover {
+  background-color: #d93;
+}
+.items-container .selector .disabled {
+  background-color: #fc5;
+}
