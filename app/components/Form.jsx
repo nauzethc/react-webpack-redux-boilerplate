@@ -9,7 +9,7 @@ export default React.createClass({
     onFetch: PropTypes.func.isRequired,
   },
 
-  handleOnClick(action) {
+  handleClick(action) {
     const value = this.refs.inputText.value.trim();
     if (value) {
       if (action === 'create') {
@@ -23,14 +23,14 @@ export default React.createClass({
 
   render() {
     return (
-      <form className="form" onSubmit={(e) => e.preventDefault()}>
+      <form className="form" onSubmit={this.handleSubmit}>
         <input type="text"
           ref="inputText"
           placeholder="Something to do..." />
-        <button onClick={(e) => this.handleOnClick('create')}>Create</button>
+        <button onClick={(e) => this.handleClick('create')}>Create</button>
         { this.props.isFetching
           ? <button disabled className="disabled">Fetching...</button>
-          : <button onClick={(e) => this.handleOnClick('fetch')}>Fetch</button>
+          : <button onClick={(e) => this.handleClick('fetch')}>Fetch</button>
         }
       </form>
     );
