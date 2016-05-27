@@ -9,6 +9,12 @@ export default React.createClass({
     onFetch: PropTypes.func.isRequired,
   },
 
+  handleSubmit(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.handleClick('create');
+  },
+
   handleClick(action) {
     const value = this.refs.inputText.value.trim();
     if (value) {
