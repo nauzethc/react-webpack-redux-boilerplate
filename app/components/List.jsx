@@ -14,7 +14,9 @@ export default React.createClass({
   render() {
     return (
       <ul className="list">
-      { this.props.items.map(item => (
+      { this.props.items
+        .map(item => item.toObject())
+        .map(item => (
         <li key={item.id}>
           <input
             type="checkbox"
