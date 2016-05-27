@@ -1,3 +1,6 @@
+import { fromJS } from 'immutable';
+
+
 // Types
 
 const CREATE  = 'my-app/items/CREATE';
@@ -9,71 +12,47 @@ const RECEIVE = 'my-app/items/RECEIVE';
 const FILTER  = 'my-app/items/FILTER';
 
 
-// Reducers
+// Initial state and reducers
 
-const initialState = {
+const initial = fromJS({
   counter: 0,
   fetching: false,
   filter: 'All',
-  itemsById: {}
-};
+  data: {},
+});
 
-function itemsById(state = {}, action = {}) {
+export default function reducer(state = initial, action = {}) {
   switch (action.type) {
 
     case CREATE:
     case RECEIVE:
-      return Object.assign({}, state, {
-        [action.id]: { id: action.id, text: action.text, done: false }
-      });
-
-    case UPDATE:
-      return Object.assign({}, state, {
-        [action.id]: { ...state[action.id], text: action.text }
-      });
-
-    case TOGGLE:
-      return Object.assign({}, state, {
-        [action.id]: { ...state[action.id], done: !state[action.id].done }
-      });
-
-    case REMOVE:
-      return Object.assign({}, Object.keys(state)
-        .filter(id => id != action.id)
-        .reduce((acc, id) => {
-          acc[id] = Object.assign({}, state[id]);
-          return acc;
-        }, {})
-      );
-
-    default:
-      return state;
-  }
-}
-
-export default function reducer(state = initialState, action = {}) {
-  switch (action.type) {
-
-    case CREATE:
-    case RECEIVE:
-      return Object.assign({}, state, {
-        counter: state.counter + 1,
+      const counter = state.get('counter') + 1;
+      return state.mergeDeep({
+        counter,
         fetching: false,
-        itemsById: itemsById(state.itemsById, { ...action, id: state.counter + 1 })
+        data: {
+          [counter]: {
+            id: counter.toString(),
+            text: action.payload.text,
+            done: false,
+          }
+        }
       });
 
     case REMOVE:
+      return state.deleteIn(['data', action.payload.id]);
+
     case UPDATE:
+      return state.setIn(['data', action.payload.id, 'text'], action.payload.text);
+
     case TOGGLE:
-      return Object.assign({}, state, {
-        itemsById: itemsById(state.itemsById, action)
-      });
+      return state.updateIn(['data', action.payload.id, 'done'], done => !done);
 
     case REQUEST:
-      return Object.assign({}, state, { fetching: true });
+      return state.set('fetching', true);
 
     case FILTER:
-      return Object.assign({}, state, { filter: action.filter });
+      return state.set('filter', action.payload.filter);
 
     default:
       return state;
@@ -84,28 +63,28 @@ export default function reducer(state = initialState, action = {}) {
 // Actions
 
 export function createItem(text) {
-  return { type: CREATE, text };
+  return { type: CREATE, payload: { text }};
 }
 
 export function removeItem(id) {
-  return { type: REMOVE, id };
+  return { type: REMOVE, payload: { id }};
 }
 
 export function updateItem(id, text) {
-  return { type: UPDATE, id, text };
+  return { type: UPDATE, payload: { id, text }};
 }
 
 export function toggleItem(id) {
-  return { type: TOGGLE, id };
+  return { type: TOGGLE, payload: { id }};
 }
 
 export function fetchItem(text) {
   return (dispatch) => {
-    setTimeout(() => dispatch({ type: REQUEST, text }), 0);
-    setTimeout(() => dispatch({ type: RECEIVE, text }), 2000);
+    setTimeout(() => dispatch({ type: REQUEST, payload: { text }}), 0);
+    setTimeout(() => dispatch({ type: RECEIVE, payload: { text }}), 2000);
   };
 }
 
 export function setFilter(filter) {
-  return { type: FILTER, filter };
+  return { type: FILTER, payload: { filter }};
 }

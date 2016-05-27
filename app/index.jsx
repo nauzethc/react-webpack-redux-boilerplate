@@ -1,24 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { fromJS } from 'immutable';
 
 import Items from './containers/Items';
 import configureStore from './store';
 
 
 // Set store and inital state (optional)
-const store = configureStore({
+const store = configureStore(fromJS({
   items: {
     counter: 3,
     fetching: false,
     filter: 'All',
-    itemsById: {
-      1: { id: 1, text: 'Buy some groceries', done: false },
-      2: { id: 2, text: 'Take a walk', done: true },
-      3: { id: 3, text: 'Wash the car', done: false },
+    data: {
+      '1': { id: '1', text: 'Buy some groceries', done: false },
+      '2': { id: '2', text: 'Take a walk',        done: true },
+      '3': { id: '3', text: 'Wash the car',       done: false },
     }
   }
-});
+}));
 
 
 // Load styles
