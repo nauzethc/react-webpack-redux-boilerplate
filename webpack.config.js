@@ -1,7 +1,7 @@
 var path              = require('path');
 var pkg               = require('./package.json');
 var webpack           = require('webpack');
-var HtmlPlugin        = require('html-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CleanPlugin       = require('clean-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -70,7 +70,7 @@ if (TARGET === 'start' || !TARGET) {
     },
 
     plugins: [
-      new HtmlPlugin({
+      new HtmlWebpackPlugin({
         title: 'React App',
         inject: 'body',
         template: path.resolve(ROOT, 'app/templates/index.html')
@@ -133,7 +133,7 @@ if (TARGET === 'start' || !TARGET) {
     },
 
     plugins: [
-      new HtmlPlugin({
+      new HtmlWebpackPlugin({
         title: 'React App',
         inject: 'body',
         template: path.resolve(ROOT, 'app/templates/index.html')
