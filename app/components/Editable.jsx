@@ -20,6 +20,12 @@ export default React.createClass({
     this.setState({ isEditing: !this.state.isEditing });
   },
 
+  handleKeyDown(e) {
+    if (e.keyCode === 13) { // Key 'Enter'
+      this.toggleEdit();
+    }
+  },
+
   render() {
     if (this.state.isEditing) {
       return <input className="editable"
@@ -27,7 +33,8 @@ export default React.createClass({
         ref="inputText"
         autoFocus="true"
         defaultValue={this.props.value}
-        onBlur={this.toggleEdit} />
+        onBlur={this.toggleEdit}
+        onKeyDown={this.handleKeyDown} />
       ;
     } else {
       return <span className="editable"
