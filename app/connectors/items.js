@@ -12,17 +12,15 @@ import {
 export default (Component) => connect(
 
   (state, props) => ({
-    isFetching: state.items.fetching,
-    filter: state.items.filter,
-    items: Object.keys(state.items.itemsById)
-      .map(id => state.items.itemsById[id])
-      .filter(item => {
-        if ((state.items.filter === 'Completed'   && !item.done) ||
-            (state.items.filter === 'Uncompleted' && item.done)) {
-            return false;
-        }
-        return true;
-      })
+    isFetching : state.getIn(['items', 'fetching']),
+    filter     : state.getIn(['items', 'filter']),
+    items      : state.getIn(['items', 'data']).filter((item, id) => {
+      const filter = state.getIn(['items', 'filter']);
+      const done   = item.get('done');
+      if (filter === 'Completed'   && !done) return false;
+      if (filter === 'Uncompleted' && done)  return false;
+      return true;
+    }).toArray()
   }),
 
   (dispatch, props) => ({
