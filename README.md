@@ -4,7 +4,7 @@ Minimal boilerplate for React + Redux + Immutable.js with developer environment.
 - Dependencies
   - [React](https://github.com/facebook/react) (UI)
   - [Redux](https://github.com/rackt/redux) (State container)
-  - [redux-thunk](https://github.com/gaearon/redux-thunk) (Function dispatching for Redux)
+  - [redux-saga](https://github.com/yelouafi/redux-saga) (Side-effect dispatching with generators)
   - [react-redux](https://github.com/rackt/react-redux) (React bindings for React)
   - [Immutable.js](https://github.com/facebook/immutable-js) (Immutable collections)
   - [redux-immutable](https://github.com/gajus/redux-immutable) (Root reducer compatibility with Immutable.js)
