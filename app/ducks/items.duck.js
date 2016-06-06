@@ -3,13 +3,13 @@ import { fromJS } from 'immutable';
 
 // Types
 
-const CREATE  = 'my-app/items/CREATE';
-const REMOVE  = 'my-app/items/REMOVE';
-const UPDATE  = 'my-app/items/UPDATE';
-const TOGGLE  = 'my-app/items/TOGGLE';
-const REQUEST = 'my-app/items/REQUEST';
-const RECEIVE = 'my-app/items/RECEIVE';
-const FILTER  = 'my-app/items/FILTER';
+export const CREATE  = 'my-app/items/CREATE';
+export const REMOVE  = 'my-app/items/REMOVE';
+export const UPDATE  = 'my-app/items/UPDATE';
+export const TOGGLE  = 'my-app/items/TOGGLE';
+export const REQUEST = 'my-app/items/REQUEST';
+export const RECEIVE = 'my-app/items/RECEIVE';
+export const FILTER  = 'my-app/items/FILTER';
 
 
 // Initial state and reducers
@@ -78,11 +78,12 @@ export function toggleItem(id) {
   return { type: TOGGLE, payload: { id }};
 }
 
-export function fetchItem(text) {
-  return (dispatch) => {
-    setTimeout(() => dispatch({ type: REQUEST, payload: { text }}), 0);
-    setTimeout(() => dispatch({ type: RECEIVE, payload: { text }}), 2000);
-  };
+export function requestItem(text) {
+  return { type: REQUEST, payload: { text }};
+}
+
+export function receiveItem(text) {
+  return { type: RECEIVE, payload: { text }};
 }
 
 export function setFilter(filter) {

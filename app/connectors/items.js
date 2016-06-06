@@ -3,7 +3,7 @@ import {
   createItem,
   removeItem,
   updateItem,
-  fetchItem,
+  requestItem,
   toggleItem,
   setFilter,
 } from '../ducks/items.duck';
@@ -24,12 +24,12 @@ export default (Component) => connect(
   }),
 
   (dispatch, props) => ({
-    onCreate: (text)     => dispatch(createItem(text)),
-    onRemove: (id)       => dispatch(removeItem(id)),
-    onUpdate: (id, text) => dispatch(updateItem(id, text)),
-    onToggle: (id)       => dispatch(toggleItem(id)),
-    onFetch:  (text)     => dispatch(fetchItem(text)),
-    onFilter: (filter)   => dispatch(setFilter(filter)),
+    onCreate:  (text)     => dispatch(createItem(text)),
+    onRemove:  (id)       => dispatch(removeItem(id)),
+    onUpdate:  (id, text) => dispatch(updateItem(id, text)),
+    onToggle:  (id)       => dispatch(toggleItem(id)),
+    onRequest: (text)     => dispatch(requestItem(text)),
+    onFilter:  (filter)   => dispatch(setFilter(filter)),
   })
 
 )(Component);

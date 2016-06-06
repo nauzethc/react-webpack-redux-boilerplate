@@ -13,7 +13,7 @@ const Items = React.createClass({
     items: PropTypes.array.isRequired,
     isFetching: PropTypes.bool,
     onCreate: PropTypes.func.isRequired,
-    onFetch: PropTypes.func.isRequired,
+    onRequest: PropTypes.func.isRequired,
     onUpdate: PropTypes.func.isRequired,
     onToggle: PropTypes.func.isRequired,
     onRemove: PropTypes.func.isRequired,
@@ -26,7 +26,7 @@ const Items = React.createClass({
         <Form
           isFetching={this.props.isFetching}
           onCreate={this.props.onCreate}
-          onFetch={this.props.onFetch} />
+          onRequest={this.props.onRequest} />
         <List
           items={this.props.items}
           onRemove={this.props.onRemove}
